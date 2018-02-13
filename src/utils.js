@@ -1,23 +1,22 @@
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
+const APP_SECRET = "prisma-is-aw3some";
 
-function getUserId(ctx) {
-  const Authorization = ctx.request.get('Authorization')
+/**
+ * Function called to retrieve the `id` of a `User` from the `context` object
+ * that's passed down the resolver chain.
+ * */
+function getUserId(context) {
+  const Authorization = context.request.get("Authorization");
   if (Authorization) {
-    const token = Authorization.replace('Bearer ', '')
-    const { userId } = jwt.verify(token, process.env.APP_SECRET)
-    return userId
+    const token = Authorization.replace("Bearer ", "");
+    const { userId } = jwt.verify(token, APP_SECRET);
+    return userId;
   }
 
-  throw new AuthError()
-}
-
-class AuthError extends Error {
-  constructor() {
-    super('Not authorized')
-  }
+  throw new Error("Not authenticated");
 }
 
 module.exports = {
-  getUserId,
-  AuthError
-}
+  APP_SECRET,
+  getUserId
+};

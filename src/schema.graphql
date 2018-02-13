@@ -1,28 +1,102 @@
-# import Post from "./generated/prisma.graphql"
+# import Company, Vote, CompanySubscriptionPayload, VoteSubscriptionPayload from "./generated/prisma.graphql"
 
 type Query {
-  feed: [Post!]!
-  drafts: [Post!]!
-  post(id: ID!): Post!
-  me: User
+  feed(filter: String, skip: Int, first: Int, id: ID): [Company!]!
+  companies(
+    where: CompanyWhereInput
+    orderBy: CompanyOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Company]!
+  # votes(
+  #   where: VoteWhereInput
+  #   orderBy: VoteOrderByInput
+  #   skip: Int
+  #   after: String
+  #   before: String
+  #   first: Int
+  #   last: Int
+  # ): [Vote]!
+  # users(
+  #   where: UserWhereInput
+  #   orderBy: UserOrderByInput
+  #   skip: Int
+  #   after: String
+  #   before: String
+  #   first: Int
+  #   last: Int
+  # ): [User]!
+  company(where: CompanyWhereUniqueInput!): Company
+  # vote(where: VoteWhereUniqueInput!): Vote
+  # user(where: UserWhereUniqueInput!): User
+  # companiesConnection(
+  #   where: CompanyWhereInput
+  #   orderBy: CompanyOrderByInput
+  #   skip: Int
+  #   after: String
+  #   before: String
+  #   first: Int
+  #   last: Int
+  # ): CompanyConnection!
+  # votesConnection(
+  #   where: VoteWhereInput
+  #   orderBy: VoteOrderByInput
+  #   skip: Int
+  #   after: String
+  #   before: String
+  #   first: Int
+  #   last: Int
+  # ): VoteConnection!
+  # usersConnection(
+  #   where: UserWhereInput
+  #   orderBy: UserOrderByInput
+  #   skip: Int
+  #   after: String
+  #   before: String
+  #   first: Int
+  #   last: Int
+  # ): UserConnection!
+  # node(id: ID!): Node
+}
+
+type Subscription {
+  newCompany: CompanySubscriptionPayload
+  newVote: VoteSubscriptionPayload
 }
 
 type Mutation {
-  signup(email: String!, password: String!, name: String!): AuthPayload!
-  login(email: String!, password: String!): AuthPayload!
-  createDraft(title: String!, text: String!): Post!
-  publish(id: ID!): Post!
-  deletePost(id: ID!): Post!
-}
-
-type AuthPayload {
-  token: String!
-  user: User!
+  post(
+    name: String
+    url: String!
+    logo: String
+    employees: String
+    tranch: String
+    description: String!
+    location: String
+    address: String
+    jobs: String
+    jobslink: String
+    sector: String
+    twitter: String
+    facebook: String
+    instagram: String
+    youtube: String
+  ): Company!
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+  vote(companyId: ID!): Vote
 }
 
 type User {
   id: ID!
-  email: String!
   name: String!
-  posts: [Post!]!
+  email: String!
+}
+
+type AuthPayload {
+  token: String
+  user: User
 }

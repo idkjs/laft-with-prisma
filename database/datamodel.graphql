@@ -1,17 +1,35 @@
-type Post {
+type Company {
   id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  isPublished: Boolean! @default(value: "false")
-  title: String!
-  text: String!
-  author: User!
+  name: String
+  url: String!
+  logo: String
+  employees: String
+  tranch: String
+  description: String!
+  location: String
+  address: String
+  jobs: String
+  jobslink: String
+  sector: String
+  twitter: String
+  facebook: String
+  instagram: String
+  youtube: String
+  postedBy: User
+  votes: [Vote!]!
+}
+
+type Vote {
+  id: ID! @unique
+  company: Company!
+  user: User!
 }
 
 type User {
   id: ID! @unique
+  name: String!
   email: String! @unique
   password: String!
-  name: String!
-  posts: [Post!]!
+  companies: [Company!]!
+  votes: [Vote!]!
 }
