@@ -1,8 +1,8 @@
-## [Deployed](https://lafrenchtech-prisma.now.sh)
+## [Deployed](https://laft-with-prisma.now.sh)
 
 ## Update on Now
 
-`now --dotenv .env --public && now alias set lafrenchtech-prisma.now.sh`
+`now --dotenv .env --public && now alias set laft-with-prisma.now.sh`
 
 ## import data
 
@@ -12,7 +12,9 @@ run `prisma import -d data.zip` where data.zip is path to data.
 
 https://zeit.co/docs/features/repositories
 
-* run `now <username>/<repository>`
+* run `now <username>/<repository>` or `now idkjs/laft-with-prisma`
+
+- with env variables run `now -e SLACK_API_TOKEN="23uhc87" -e SLACK_SUBDOMAIN="socketio" now-examples/slackin` or `now --dotenv .env --public idkjs/laft-with-prisma`
 
 ## Deployment/Update Workflow with Now
 
