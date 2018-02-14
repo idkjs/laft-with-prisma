@@ -1,0 +1,11 @@
+{
+  "alias": "laft-with-prisma",
+  "public": true,
+  "env": [
+    "PRISMA_STAGE",
+    "PRISMA_ENDPOINT",
+    "PRISMA_CLUSTER",
+    "PRISMA_SECRET",
+    "APP_SECRET"
+  ]
+}
