@@ -7,6 +7,7 @@ https://zeit.co/docs/features/repositories
 https://zeit.co/docs/getting-started/environment-variables#via-%E2%80%9Cnow.json%E2%80%9D
 https://github.com/zeit/now-env
 https://zeit.co/docs/features/configuration
+https://zeit.co/docs/getting-started/secrets
 ```
 
 * run `now <username>/<repository>` or `now idkjs/laft-with-prisma`
