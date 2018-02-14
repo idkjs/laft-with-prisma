@@ -33,3 +33,7 @@ type User {
   companies: [Company!]!
   votes: [Vote!]!
 }
+
+type AggregateCompany {
+  count: Int!
+}
