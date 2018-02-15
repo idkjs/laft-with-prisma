@@ -1,11 +1,12 @@
 {
   "alias": "laft-with-prisma",
   "public": true,
-  "env": [
-    "PRISMA_STAGE",
-    "PRISMA_ENDPOINT",
-    "PRISMA_CLUSTER",
-    "PRISMA_SECRET",
-    "APP_SECRET"
-  ]
+  "env": {
+    "PRISMA_STAGE": "dev",
+    "PRISMA_ENDPOINT":
+      "https://eu1.prisma.sh/alain-armand-1b1a62/laft-with-prisma/dev",
+    "PRISMA_CLUSTER": "alain-armand-1b1a62/prisma-eu1",
+    "PRISMA_SECRET": "@prisma-secret-key",
+    "APP_SECRET": "@app_secret-key"
+  }
 }

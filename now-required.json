@@ -3,6 +3,6 @@
   "PRISMA_ENDPOINT":
     "https://eu1.prisma.sh/alain-armand-1b1a62/laft-with-prisma/dev",
   "PRISMA_CLUSTER": "alain-armand-1b1a62/prisma-eu1",
-  "PRISMA_SECRET": "@PRISMA_SECRET",
-  "APP_SECRET": "@APP_SECRET"
+  "PRISMA_SECRET": "@prisma-secret-key",
+  "APP_SECRET": "@app_secret-key"
 }

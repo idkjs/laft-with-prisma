@@ -7,3 +7,4 @@ node_modules
 .env*
 data.zip
 now-secrets.json
+now-env.md
