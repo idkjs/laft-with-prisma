@@ -46,8 +46,76 @@ type Vote implements Node {
 # Other Types
 #
 
+type AggregateAggregateCompany {
+  count: Int!
+}
+
 type AggregateCompany {
   count: Int!
+}
+
+type AggregateCompanyConnection {
+  pageInfo: PageInfo!
+  edges: [AggregateCompanyEdge]!
+  aggregate: AggregateAggregateCompany!
+}
+
+input AggregateCompanyCreateInput {
+  count: Int!
+}
+
+type AggregateCompanyEdge {
+  node: AggregateCompany!
+  cursor: String!
+}
+
+enum AggregateCompanyOrderByInput {
+  count_ASC
+  count_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type AggregateCompanyPreviousValues {
+  count: Int!
+}
+
+type AggregateCompanySubscriptionPayload {
+  mutation: MutationType!
+  node: AggregateCompany
+  updatedFields: [String!]
+  previousValues: AggregateCompanyPreviousValues
+}
+
+input AggregateCompanySubscriptionWhereInput {
+  AND: [AggregateCompanySubscriptionWhereInput!]
+  OR: [AggregateCompanySubscriptionWhereInput!]
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: AggregateCompanyWhereInput
+}
+
+input AggregateCompanyUpdateInput {
+  count: Int
+}
+
+input AggregateCompanyWhereInput {
+  AND: [AggregateCompanyWhereInput!]
+  OR: [AggregateCompanyWhereInput!]
+  count: Int
+  count_not: Int
+  count_in: [Int!]
+  count_not_in: [Int!]
+  count_lt: Int
+  count_lte: Int
+  count_gt: Int
+  count_gte: Int
 }
 
 type AggregateUser {
@@ -557,6 +625,7 @@ type Mutation {
   createCompany(data: CompanyCreateInput!): Company!
   createVote(data: VoteCreateInput!): Vote!
   createUser(data: UserCreateInput!): User!
+  createAggregateCompany(data: AggregateCompanyCreateInput!): AggregateCompany!
   updateCompany(data: CompanyUpdateInput!, where: CompanyWhereUniqueInput!): Company
   updateVote(data: VoteUpdateInput!, where: VoteWhereUniqueInput!): Vote
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
@@ -569,9 +638,11 @@ type Mutation {
   updateManyCompanies(data: CompanyUpdateInput!, where: CompanyWhereInput!): BatchPayload!
   updateManyVotes(data: VoteUpdateInput!, where: VoteWhereInput!): BatchPayload!
   updateManyUsers(data: UserUpdateInput!, where: UserWhereInput!): BatchPayload!
+  updateManyAggregateCompanies(data: AggregateCompanyUpdateInput!, where: AggregateCompanyWhereInput!): BatchPayload!
   deleteManyCompanies(where: CompanyWhereInput!): BatchPayload!
   deleteManyVotes(where: VoteWhereInput!): BatchPayload!
   deleteManyUsers(where: UserWhereInput!): BatchPayload!
+  deleteManyAggregateCompanies(where: AggregateCompanyWhereInput!): BatchPayload!
 }
 
 enum MutationType {
@@ -595,12 +666,14 @@ type Query {
   companies(where: CompanyWhereInput, orderBy: CompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Company]!
   votes(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vote]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  aggregateCompanies(where: AggregateCompanyWhereInput, orderBy: AggregateCompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [AggregateCompany]!
   company(where: CompanyWhereUniqueInput!): Company
   vote(where: VoteWhereUniqueInput!): Vote
   user(where: UserWhereUniqueInput!): User
   companiesConnection(where: CompanyWhereInput, orderBy: CompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CompanyConnection!
   votesConnection(where: VoteWhereInput, orderBy: VoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): VoteConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  aggregateCompaniesConnection(where: AggregateCompanyWhereInput, orderBy: AggregateCompanyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AggregateCompanyConnection!
   node(id: ID!): Node
 }
 
@@ -608,6 +681,7 @@ type Subscription {
   company(where: CompanySubscriptionWhereInput): CompanySubscriptionPayload
   vote(where: VoteSubscriptionWhereInput): VoteSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  aggregateCompany(where: AggregateCompanySubscriptionWhereInput): AggregateCompanySubscriptionPayload
 }
 
 type UserConnection {
