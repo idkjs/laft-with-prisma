@@ -5,7 +5,9 @@
     "debug":
       "nodemon -e js,graphql -x node --inspect -r dotenv/config src/index.js",
     "playground": "graphql playground",
-    "dev": "npm-run-all --parallel start playground"
+    "dev": "npm-run-all --parallel start playground",
+    "deploy":
+      "now --public -e PRISMA_SECRET=@prisma-secret-key -e APP_SECRET=@app-secret-key idkjs/laft-with-prisma"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
