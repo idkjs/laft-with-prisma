@@ -14,6 +14,9 @@
     "now-env": "^3.0.3",
     "prisma-binding": "1.5.10"
   },
+  "now": {
+    "public": true
+  },
   "devDependencies": {
     "graphql-cli": "2.14.1",
     "nodemon": "1.14.12",

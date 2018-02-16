@@ -7,7 +7,7 @@
 
 type Company implements Node {
   id: ID!
-  name: String
+  name: String!
   url: String!
   logo: String
   employees: String
@@ -137,7 +137,7 @@ type CompanyConnection {
 }
 
 input CompanyCreateInput {
-  name: String
+  name: String!
   url: String!
   logo: String
   employees: String
@@ -167,7 +167,7 @@ input CompanyCreateOneWithoutVotesInput {
 }
 
 input CompanyCreateWithoutPostedByInput {
-  name: String
+  name: String!
   url: String!
   logo: String
   employees: String
@@ -186,7 +186,7 @@ input CompanyCreateWithoutPostedByInput {
 }
 
 input CompanyCreateWithoutVotesInput {
-  name: String
+  name: String!
   url: String!
   logo: String
   employees: String
@@ -250,7 +250,7 @@ enum CompanyOrderByInput {
 
 type CompanyPreviousValues {
   id: ID!
-  name: String
+  name: String!
   url: String!
   logo: String
   employees: String

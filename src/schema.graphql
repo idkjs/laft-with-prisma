@@ -69,7 +69,7 @@ type Subscription {
 
 type Mutation {
   post(
-    name: String
+    name: String!
     url: String!
     logo: String
     employees: String
