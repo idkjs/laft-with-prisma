@@ -1,5 +1,7 @@
 ## [Deployed](https://laft-with-prisma.now.sh/)
 
+## [Generated](https://laft-with-prisma-jnqvrjxniz.now.sh)
+
 ## Deploy with Now via Github
 
 ```
